@@ -13,8 +13,8 @@
                 }
             }
         %>            
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageProdutos">Voltar</a>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=sairDaSessao">Sair</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Voltar</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
         <form method="POST" action="Controller">
             Nome do produto:
             <input type="text" name="txtNomeDoProduto" /><br/>

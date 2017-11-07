@@ -13,8 +13,8 @@
                 }
             }
         %>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageCarrinho">Carrinho</a>             
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageProdutos">Produtos</a>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=sairDaSessao">Sair</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>             
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Produtos</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
     </body>
 </html>

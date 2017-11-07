@@ -13,12 +13,12 @@
                 }
             }
         %>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageCarrinho">Carrinho</a>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageHistorico">Histórico</a>               
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=sairDaSessao">Sair</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">Histórico</a>               
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
         <h3>Produtos</h3>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageCadastroProduto">Cadastrar</a>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageListar">Listar</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCadastroProduto">Cadastrar</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageListar">Listar</a>
         <form method="GET" action="../Controller">
             Buscar:
             <input type="text" name="txtBuscar" /> 

@@ -15,17 +15,18 @@
                 }
             }
         %>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageProdutos">Voltar</a>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageCarrinho">Carrinho</a>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageHistorico">Histórico</a>               
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=sairDaSessao">Sair</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Voltar</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">Histórico</a>               
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
         <%
             List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
             for (Produto p : produtos) {
         %>
+        <br/>
         <img src='<%= p.getImagemDoProduto()%>' title='<%= p.getNomeDoProduto()%>' alt='<%= p.getNomeDoProduto()%>' />
         <h4>ID: <%= p.getId()%></h4>
-        <h4>Nome: <%= p.getNomeDoProduto()%></h4>
+        <h4>Nome: <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageSelecionado&itemSelecionado=<%= p.getId()%>"><%= p.getNomeDoProduto()%></a></h4>
         <p>Categoria: <%= p.getTipoDeProduto()%></p>
         <p>Descrição: <%= p.getDescricao()%></p>
         <p>Quantidade: <%= p.getQuantidade()%></p>

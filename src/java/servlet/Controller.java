@@ -171,10 +171,21 @@ public class Controller extends HttpServlet {
         if (acao.equals("pageListar") && (Boolean) session.getAttribute("isLogado") == true) {
             try {
                 EcommerceDAO listando = new EcommerceDAO();
-                listando.listar();
                 List<Produto> produtos = listando.listar();
                 request.setAttribute("produtos", produtos);
                 request.getRequestDispatcher("logado/listarProdutos.jsp").forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (acao.equals("pageSelecionado") && (Boolean) session.getAttribute("isLogado") == true) {
+            try {
+                Long itemSelecionado = Long.valueOf(request.getParameter("itemSelecionado"));
+                EcommerceDAO listando = new EcommerceDAO();
+                Produto selecionado = listando.buscarPorId(itemSelecionado);
+                request.setAttribute("selecionado", selecionado);
+                request.getRequestDispatcher("logado/produtoSelecionado.jsp").forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -35,6 +35,6 @@
             <input type="hidden" name="txtAcao" value="atualizarPessoa" />
             <input type="submit" value="Cadastrar"/>
         </form>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageLogin">Entrar</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogin">Entrar</a>
     </body>
 </html>
