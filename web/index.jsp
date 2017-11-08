@@ -8,7 +8,7 @@
     <body>
         <% Boolean errouDados = (Boolean) request.getAttribute("errouDados");%>
         <% if (!(errouDados == null)) { %>
-        <h3>Dados inseridos não correspondem a nenhum usuário, se você não está cadastrado, por favor <a href="../TrabalhoDeWeb/Controller?txtAcao=pageCadastrarPessoa">cadastre-se</a>.</h3>
+        <h3>Dados inseridos não correspondem a nenhum usuário, se você não está cadastrado, por favor <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCadastrarPessoa">cadastre-se</a>.</h3>
         <% }%>
         <form method="POST" action="Controller">
             Usuário:
@@ -18,6 +18,6 @@
             <input type="hidden" name="txtAcao" value="login" />
             <input type="submit" value="Entrar"/>
         </form>
-        <a href="../TrabalhoDeWeb/Controller?txtAcao=pageCadastrarPessoa">Cadastrar</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCadastrarPessoa">Cadastrar</a>
     </body>
 </html>

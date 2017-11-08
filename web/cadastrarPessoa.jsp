@@ -28,6 +28,6 @@
             <input type="hidden" name="txtAcao" value="cadastrarPessoa" />
             <input type="submit" value="Cadastrar"/>
         </form>
-        <a href="index.jsp">Entrar</a>
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogin">Entrar</a>
     </body>
 </html>

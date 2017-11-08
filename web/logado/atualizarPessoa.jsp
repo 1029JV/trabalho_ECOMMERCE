@@ -33,8 +33,7 @@
             Senha:
             <input type="password" name="txtSenha" /><br/>
             <input type="hidden" name="txtAcao" value="atualizarPessoa" />
-            <input type="submit" value="Cadastrar"/>
+            <input type="submit" value="Atualizar"/>
         </form>
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogin">Entrar</a>
     </body>
 </html>
