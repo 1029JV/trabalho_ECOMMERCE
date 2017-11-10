@@ -49,7 +49,7 @@ public class EcommerceDAO {
     }
 
     public void atualizarPessoa(Pessoa p) throws SQLException {
-        String sql = "UPDATE usuario SET nome = ?, rg = ?, cpf = ?, foto = ?, telefone = ?, email = ?, endereco = ? WHERE id = ?;";
+        String sql = "UPDATE usuario SET nome = ?, rg = ?, cpf = ?, foto = ?, telefone = ?, email = ?, endereco = ? WHERE id_usuario = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, p.getNomeCompleto());
         stmt.setString(2, p.getRg());
@@ -64,7 +64,7 @@ public class EcommerceDAO {
     }
 
     public void apagarPessoa(Integer id) throws SQLException {
-        String sql = "DELETE FROM usuario WHERE id = ?;";
+        String sql = "DELETE FROM usuario WHERE id_usuario = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setLong(1, id);
         stmt.execute();
@@ -87,7 +87,7 @@ public class EcommerceDAO {
     }
 
     public void atualizarProduto(Produto p) throws SQLException {
-        String sql = "UPDATE usuario SET nome = ?, tipodeproduto = ?, descricao = ?, precounitario = ?, quantidade = ?, imagemdoproduto = ?, active = ? WHERE id = ?;";
+        String sql = "UPDATE usuario SET nome = ?, tipodeproduto = ?, descricao = ?, precounitario = ?, quantidade = ?, imagemdoproduto = ?, active = ? WHERE id_produto = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, p.getNomeDoProduto());
         stmt.setString(2, p.getTipoDeProduto());
@@ -101,8 +101,30 @@ public class EcommerceDAO {
         stmt.close();
     }
 
+    public Pessoa buscarPessoa(long id) throws SQLException {
+        String sql = "SELECT * FROM produto WHERE id_usuario = ?;";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setLong(1, id);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            Pessoa p = new Pessoa();
+            p.setNomeCompleto(rs.getString("nome"));
+            p.setRg(rs.getString("rg"));
+            p.setCpf(rs.getString("cpf"));
+            p.setFoto(rs.getString("foto"));
+            p.setTelefone(rs.getString("telefone"));
+            p.setEmail(rs.getString("email"));
+            p.setEndereco(rs.getString("endereco"));
+            p.setLogin(rs.getString("login"));
+            p.setSenha(rs.getString("senha"));
+            return p;
+        }
+        stmt.close();
+        return null;
+    }
+    
     public void apagarProduto(long id) throws SQLException {
-        String sql = "DELETE FROM produto WHERE id = ?;";
+        String sql = "DELETE FROM produto WHERE id_produto = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setLong(1, id);
         stmt.execute();
@@ -151,19 +173,20 @@ public class EcommerceDAO {
         return produtos;
     }
 
-    public Produto buscarPorId(long id) throws SQLException {
-        String sql = "SELECT * FROM produto WHERE id = ?;";
+    public Produto buscarProduto(long id) throws SQLException {
+        String sql = "SELECT * FROM produto WHERE id_produto = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setLong(1, id);
         ResultSet rs = stmt.executeQuery();
         if (rs.next()) {
             Produto p = new Produto();
+            p.setId(rs.getLong("id_produto"));
             p.setNomeDoProduto(rs.getString("nome"));
             p.setTipoDeProduto(rs.getString("tipodeproduto"));
             p.setDescricao(rs.getString("descricao"));
             p.setPrecoPorUnidade(rs.getDouble("precounitario"));
             p.setQuantidade(rs.getInt("quantidade"));
-            p.setImagemDoProduto(rs.getString("imagemproduto"));
+            p.setImagemDoProduto(rs.getString("imagemdoproduto"));
             p.setAtivo(rs.getBoolean("active"));
             return p;
         }

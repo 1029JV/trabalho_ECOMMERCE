@@ -183,7 +183,7 @@ public class Controller extends HttpServlet {
             try {
                 Long itemSelecionado = Long.valueOf(request.getParameter("itemSelecionado"));
                 EcommerceDAO listando = new EcommerceDAO();
-                Produto selecionado = listando.buscarPorId(itemSelecionado);
+                Produto selecionado = listando.buscarProduto(itemSelecionado);
                 request.setAttribute("selecionado", selecionado);
                 request.getRequestDispatcher("logado/produtoSelecionado.jsp").forward(request, response);
             } catch (Exception e) {
