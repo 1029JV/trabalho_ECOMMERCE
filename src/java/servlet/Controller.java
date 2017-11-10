@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 
 public class Controller extends HttpServlet {
 
+    Long idDoLogado;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,13 +36,11 @@ public class Controller extends HttpServlet {
             String senha = request.getParameter("txtSenha");
             Boolean errouDados = true;
             isLogado = true;
-            Long idDoLogado = null;
             try {
                 EcommerceDAO logado = new EcommerceDAO();
                 idDoLogado = logado.entrarUsuario(usuario, senha);
                 if (idDoLogado != null) {
                     session.setAttribute("isLogado", isLogado);
-                    request.setAttribute("idDoLogado", idDoLogado);
                     request.getRequestDispatcher("logado/index.jsp").forward(request, response);
                 } else {
                     request.setAttribute("errouDados", errouDados);
@@ -200,7 +200,15 @@ public class Controller extends HttpServlet {
         }
 
         if (acao.equals("pageAtualizarPessoa") && (Boolean) session.getAttribute("isLogado") == true) {
-            request.getRequestDispatcher("logado/atualizarPessoa.jsp").forward(request, response);
+            try {
+                EcommerceDAO atualizando = new EcommerceDAO();
+                Pessoa pessoaParaAtualizar = new Pessoa();
+                pessoaParaAtualizar = atualizando.buscarPessoa(idDoLogado);
+                request.setAttribute("pessoaParaAtualizar", pessoaParaAtualizar);
+                request.getRequestDispatcher("logado/atualizarPessoa.jsp").forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         if (acao.equals("pageCadastroProduto") && (Boolean) session.getAttribute("isLogado") == true) {
@@ -218,6 +226,10 @@ public class Controller extends HttpServlet {
 
         if (acao.equals("pageCadastrarPessoa")) {
             request.getRequestDispatcher("cadastrarPessoa.jsp").forward(request, response);
+        }
+
+        if (acao.equals("pageLogado")) {
+            request.getRequestDispatcher("logado/index.jsp").forward(request, response);
         }
 
         if (acao.equals("redirecionaNaoLogado")) {

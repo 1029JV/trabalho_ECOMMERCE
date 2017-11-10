@@ -49,7 +49,7 @@ public class EcommerceDAO {
     }
 
     public void atualizarPessoa(Pessoa p) throws SQLException {
-        String sql = "UPDATE usuario SET nome = ?, rg = ?, cpf = ?, foto = ?, telefone = ?, email = ?, endereco = ? WHERE id_usuario = ?;";
+        String sql = "UPDATE usuario SET nome = ?, rg = ?, cpf = ?, telefone = ?, email = ?, endereco = ? WHERE id_usuario = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, p.getNomeCompleto());
         stmt.setString(2, p.getRg());
@@ -61,6 +61,28 @@ public class EcommerceDAO {
         stmt.setLong(8, p.getId());
         stmt.execute();
         stmt.close();
+    }
+
+    public Pessoa buscarPessoa(long id) throws SQLException {
+        String sql = "SELECT * FROM usuario WHERE id_usuario = ?;";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setLong(1, id);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            Pessoa p = new Pessoa();
+            p.setNomeCompleto(rs.getString("nome"));
+            p.setRg(rs.getString("rg"));
+            p.setCpf(rs.getString("cpf"));
+            p.setFoto(rs.getString("foto"));
+            p.setTelefone(rs.getString("telefone"));
+            p.setEmail(rs.getString("email"));
+            p.setEndereco(rs.getString("endereco"));
+            p.setLogin(rs.getString("login"));
+            p.setSenha(rs.getString("senha"));
+            return p;
+        }
+        stmt.close();
+        return null;
     }
 
     public void apagarPessoa(Integer id) throws SQLException {
@@ -101,28 +123,6 @@ public class EcommerceDAO {
         stmt.close();
     }
 
-    public Pessoa buscarPessoa(long id) throws SQLException {
-        String sql = "SELECT * FROM produto WHERE id_usuario = ?;";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
-        stmt.setLong(1, id);
-        ResultSet rs = stmt.executeQuery();
-        if (rs.next()) {
-            Pessoa p = new Pessoa();
-            p.setNomeCompleto(rs.getString("nome"));
-            p.setRg(rs.getString("rg"));
-            p.setCpf(rs.getString("cpf"));
-            p.setFoto(rs.getString("foto"));
-            p.setTelefone(rs.getString("telefone"));
-            p.setEmail(rs.getString("email"));
-            p.setEndereco(rs.getString("endereco"));
-            p.setLogin(rs.getString("login"));
-            p.setSenha(rs.getString("senha"));
-            return p;
-        }
-        stmt.close();
-        return null;
-    }
-    
     public void apagarProduto(long id) throws SQLException {
         String sql = "DELETE FROM produto WHERE id_produto = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);

@@ -13,8 +13,11 @@
                 }
             }
         %>
+
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageAtualizarPessoa">Atualizar dados pessoais</a>   
         <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>
         <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">Histórico</a>               
+        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Produtos</a>
         <a href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
         <h3>Produtos</h3>
         <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCadastroProduto">Cadastrar</a>
