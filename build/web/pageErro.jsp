@@ -3,9 +3,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="imagens/ico/ds.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
         <title>Página de Erro</title>
     </head>
     <body>
-        <h3>Algo deu erro, por favor volte a fazer login e <a href="../TrabalhoDeWeb/Controller?txtAcao=sairDaSessao">tente novamente.</a></h3>
+        <section class="container text-center">
+            <img src="imagens/pageErro.png" class="distancia2" title="Doces & Salgados" alt="Doces & Salgados"/>
+            <h1>Algo deu errado!</h1>
+            <h3>Por favor volte a fazer login e <a href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">tente novamente.</a></h3>
+        </section>
+        <footer class="blog-footer">
+            <p>Todos os direitos reservados | Copyright © 2017  Doces & Salgados.</p>
+            <a href="#"><img src="imagens/ico/facebook.png"></a>
+            <a href="#"><img src="imagens/ico/google.png"></a>
+            <a href="#"><img src="imagens/ico/twitter.png"></a>
+        </footer>
     </body>
 </html>

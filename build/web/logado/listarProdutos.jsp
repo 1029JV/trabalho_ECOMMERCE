@@ -5,6 +5,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" type="image/x-icon" href="imagens/ico/ds.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
         <title>Lista de Produtos</title>
     </head>
     <body>
@@ -15,29 +18,42 @@
                 }
             }
         %>
-
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageAtualizarPessoa">Atualizar dados pessoais</a>   
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">Histórico</a>               
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Voltar</a>
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
-        <%
-            List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
-            for (Produto p : produtos) {
-        %>
-        <br/>
-        <img src='<%= p.getImagemDoProduto()%>' title='<%= p.getNomeDoProduto()%>' alt='<%= p.getNomeDoProduto()%>' />
-        <h4>ID: <%= p.getId()%></h4>
-        <h4>Nome: <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageSelecionado&itemSelecionado=<%= p.getId()%>"><%= p.getNomeDoProduto()%></a></h4>
-        <p>Categoria: <%= p.getTipoDeProduto()%></p>
-        <p>Descrição: <%= p.getDescricao()%></p>
-        <p>Quantidade: <%= p.getQuantidade()%></p>
-        <p>Preço da unidade: <%= p.getPrecoPorUnidade()%></p>
-        <p>Preço do cento: <%= p.getPrecoPorUnidade() * 100 * 0.9%></p>
-        <br/>
-        <%
-            }
-
-        %>
+        <header>
+            <div class="blog-masthead">
+                <div class="container">
+                    <nav class="nav">
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogado">Início</a>
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageAtualizarPessoa">Atualizar dados pessoais</a>   
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">Histórico</a>               
+                        <a class="nav-link active" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Produtos</a>
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <section class="row text-center container distancia">
+            <%
+                List<Produto> produtos = (List<Produto>) request.getAttribute("produtos");
+                for (Produto p : produtos) {
+            %>
+            <div class="col-lg-3 img-thumbnail distancia3">
+                <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageSelecionado&itemSelecionado=<%= p.getId()%>"><img src='imagens/<%= p.getImagemDoProduto()%>' class="rounded-circle tamanho" title='<%= p.getNomeDoProduto()%>' alt='<%= p.getNomeDoProduto()%>'></a>
+                <p>Nome: <%= p.getNomeDoProduto()%></p>
+                <p>Categoria: <%= p.getTipoDeProduto()%></p>
+                <p>Quantidade: <%= p.getQuantidade()%> unidades</p>
+                <a class="btn btn-primary btn-block" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageAtualizarProduto&itemSelecionado=<%= p.getId()%>">Atualizar</a>
+                <a class="btn btn-primary btn-block" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageSelecionado&itemSelecionado=<%= p.getId()%>">Detalhes</a>
+            </div>
+            <%
+                }
+            %>
+        </section>
+        <footer class="blog-footer">
+            <p>Todos os direitos reservados | Copyright © 2017  Doces & Salgados.</p>
+            <a href="#"><img src="imagens/ico/facebook.png"></a>
+            <a href="#"><img src="imagens/ico/google.png"></a>
+            <a href="#"><img src="imagens/ico/twitter.png"></a>
+        </footer>
     </body>
 </html>

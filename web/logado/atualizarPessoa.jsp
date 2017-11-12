@@ -4,7 +4,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Atualizar pessoa</title>
+        <link rel="shortcut icon" type="image/x-icon" href="imagens/ico/ds.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <title>Atualizar cadastro</title>
     </head>
     <body>
         <% session = request.getSession(false);
@@ -15,27 +18,44 @@
             }
             Pessoa p = (Pessoa) request.getAttribute("pessoaParaAtualizar");
         %>
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageAtualizarPessoa">Atualizar dados pessoais</a>   
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">Histórico</a>               
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Produtos</a>
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogado">Voltar</a>
-        <a href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
-        <form method="POST" action="Controller">
-            Nome completo:
-            <input type="text" name="txtNomeCompleto" value="<%= p.getNomeCompleto()%>"/><br/>
-            RG:
-            <input type="tel" name="txtRG" value="<%= p.getRg()%>"/><br/>
-            CPF:
-            <input type="text" name="txtCPF" value="<%= p.getCpf()%>"/><br/>
-            Telefone:
-            <input type="tel" name="txtTelefone" value="<%= p.getTelefone()%>"/><br/>
-            Email:
-            <input type="email" name="txtEmail" value="<%= p.getEmail()%>"/><br/>
-            Endereço:
-            <input type="text" name="txtEndereco" value="<%= p.getEndereco()%>"/><br/>
-            <input type="hidden" name="txtAcao" value="atualizarPessoa" />
-            <input type="submit" value="Atualizar"/>
-        </form>
+        <header>
+            <div class="blog-masthead">
+                <div class="container">
+                    <nav class="nav">
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogado">Início</a>
+                        <a class="nav-link active" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageAtualizarPessoa">Atualizar dados pessoais</a>   
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">Histórico</a>               
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Produtos</a>
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <section class="container">
+            <form class="form-horizontal" method="POST" action="Controller">
+                <h2 class="form-signin-heading">Doces & Salgados</h2>
+                <label class="col-md-4 control-label">Nome completo:</label>  
+                <input name="txtNomeCompleto" type="text" class="form-control input-md col-lg-6" required="" value='<%= p.getNomeCompleto()%>'>
+                <label class="col-md-4 control-label">RG:</label>  
+                <input name="txtRG" type="text" class="form-control input-md col-lg-3" required="" value='<%= p.getRg()%>'>
+                <label class="col-md-4 control-label">CPF:</label>  
+                <input name="txtCPF" type="text" class="form-control input-md col-lg-4" required="" value='<%= p.getCpf()%>'>
+                <label class="col-md-4 control-label">Telefone:</label>
+                <input name="txtTelefone" type="tel" class="form-control input-md col-lg-3" required="" value='<%= p.getTelefone()%>'>
+                <label class="col-md-4 control-label">Email:</label>  
+                <input name="txtEmail" type="email" class="form-control input-md col-lg-5" required="" value='<%= p.getEmail()%>'>
+                <label class="col-md-4 control-label">Endereço:</label>  
+                <input name="txtEndereco" type="text" class="form-control input-md col-lg-8" required="" value='<%= p.getEndereco()%>'>
+                <input type="hidden" name="txtAcao" value="atualizarPessoa" />
+                <input class="btn btn-lg btn-primary" type="submit" value="Atualizar"/><br/>
+            </form>
+        </section>
+        <footer class="blog-footer">
+            <p>Todos os direitos reservados | Copyright © 2017  Doces & Salgados.</p>
+            <a href="#"><img src="imagens/ico/facebook.png"></a>
+            <a href="#"><img src="imagens/ico/google.png"></a>
+            <a href="#"><img src="imagens/ico/twitter.png"></a>
+        </footer>
     </body>
 </html>

@@ -50,7 +50,8 @@ public class Controller extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        if (acao.equals("cadastrarPessoa") && (Boolean) session.getAttribute("isLogado") == true) {
+
+        if (acao.equals("cadastrarPessoa")) {
             String nome = request.getParameter("txtNomeCompleto");
             String rg = request.getParameter("txtRG");
             String cpf = request.getParameter("txtCPF");
@@ -60,24 +61,31 @@ public class Controller extends HttpServlet {
             String endereco = request.getParameter("txtEndereco");
             String usuario = request.getParameter("txtUsuario");
             String senha = request.getParameter("txtSenha");
+            Boolean cadastrado = false;
             try {
-                Pessoa p = new Pessoa();
-                p.setNomeCompleto(nome);
-                p.setRg(rg);
-                p.setCpf(cpf);
-                p.setFoto(foto);
-                p.setTelefone(telefone);
-                p.setEmail(email);
-                p.setEndereco(endereco);
-                p.setLogin(usuario);
-                p.setSenha(senha);
-                EcommerceDAO logado = new EcommerceDAO();
-                logado.inserirPessoa(p);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                EcommerceDAO cadastrar = new EcommerceDAO();
+                if (cadastrar.verificarCadastro(cpf, rg, usuario, email)) {
+                    request.setAttribute("cadastrado", cadastrado);
+                    request.getRequestDispatcher("cadastrarPessoa.jsp").forward(request, response);
+                } else {
+                    Pessoa p = new Pessoa();
+                    p.setNomeCompleto(nome);
+                    p.setRg(rg);
+                    p.setCpf(cpf);
+                    p.setFoto(foto);
+                    p.setTelefone(telefone);
+                    p.setEmail(email);
+                    p.setEndereco(endereco);
+                    p.setLogin(usuario);
+                    p.setSenha(senha);
+                    cadastrar.inserirPessoa(p);
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
         if (acao.equals("atualizarPessoa") && (Boolean) session.getAttribute("isLogado") == true) {
             String nome = request.getParameter("txtNomeCompleto");
             String rg = request.getParameter("txtRG");
@@ -136,7 +144,6 @@ public class Controller extends HttpServlet {
             String descricao = request.getParameter("txtDescricao");
             Double precoPorUnidade = Double.valueOf(request.getParameter("txtPrecoUnidade"));
             Integer quantidade = Integer.valueOf(request.getParameter("txtQuantidade"));
-            String imagemDoProduto = request.getParameter("txtImagemDoProduto");
             Boolean ativo = Boolean.valueOf(request.getParameter("txtAtivo"));
             try {
                 EcommerceDAO logado = new EcommerceDAO();
@@ -146,7 +153,6 @@ public class Controller extends HttpServlet {
                 p.setDescricao(descricao);
                 p.setPrecoPorUnidade(precoPorUnidade);
                 p.setQuantidade(quantidade);
-                p.setImagemDoProduto(imagemDoProduto);
                 p.setAtivo(ativo);
                 logado.atualizarProduto(p);
                 request.getRequestDispatcher("logado/atualizarProduto.jsp").forward(request, response);
@@ -154,12 +160,16 @@ public class Controller extends HttpServlet {
                 e.printStackTrace();
             }
         }
+
+        if (acao.equals("adicionarCarrinho") && (Boolean) session.getAttribute("isLogado") == true) {
+            
+        }
+
         if (acao.equals("sairDaSessao")) {
             session.invalidate();
             response.sendRedirect("index.jsp");
         }
 
-        // <editor-fold defaultstate="collapsed" desc="Redirecionamentos">
         if (acao.equals("pageHistorico") && (Boolean) session.getAttribute("isLogado") == true) {
             request.getRequestDispatcher("logado/historico.jsp").forward(request, response);
         }
@@ -196,7 +206,16 @@ public class Controller extends HttpServlet {
         }
 
         if (acao.equals("pageAtualizarProduto") && (Boolean) session.getAttribute("isLogado") == true) {
-            request.getRequestDispatcher("logado/atualizarProduto.jsp").forward(request, response);
+            try {
+                Long itemSelecionado = Long.valueOf(request.getParameter("itemSelecionado"));
+                EcommerceDAO atualizando = new EcommerceDAO();
+                Produto produtoParaAtualizar = new Produto();
+                produtoParaAtualizar = atualizando.buscarProduto(itemSelecionado);
+                request.setAttribute("produtoParaAtualizar", produtoParaAtualizar);
+                request.getRequestDispatcher("logado/atualizarProduto.jsp").forward(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         if (acao.equals("pageAtualizarPessoa") && (Boolean) session.getAttribute("isLogado") == true) {
@@ -215,11 +234,6 @@ public class Controller extends HttpServlet {
             request.getRequestDispatcher("logado/cadastrarProduto.jsp").forward(request, response);
         }
 
-        if (acao.equals("pageBusca")) {
-            String buscar = request.getParameter("txtBuscar");
-            request.getRequestDispatcher("logado/encontrados.jsp").forward(request, response);
-        }
-
         if (acao.equals("pageLogin")) {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
@@ -235,7 +249,6 @@ public class Controller extends HttpServlet {
         if (acao.equals("redirecionaNaoLogado")) {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
-// </editor-fold>
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -31,6 +31,21 @@ public class EcommerceDAO {
         return null;
     }
 
+    public Boolean verificarCadastro(String CPF, String RG, String login, String email) throws SQLException {
+        String sql = "SELECT * FROM usuario WHERE cpf = ? OR rg = ? OR login = ? OR email = ?;";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, CPF);
+        stmt.setString(2, RG);
+        stmt.setString(3, login);
+        stmt.setString(4, email);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return true;
+        }
+        stmt.close();
+        return false;
+    }
+
     //Pessoa
     public void inserirPessoa(Pessoa p) throws SQLException {
         String sql = "INSERT INTO usuario (nome, rg, cpf, foto, telefone, email, endereco, login, senha) values (?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -109,16 +124,15 @@ public class EcommerceDAO {
     }
 
     public void atualizarProduto(Produto p) throws SQLException {
-        String sql = "UPDATE usuario SET nome = ?, tipodeproduto = ?, descricao = ?, precounitario = ?, quantidade = ?, imagemdoproduto = ?, active = ? WHERE id_produto = ?;";
+        String sql = "UPDATE usuario SET nome = ?, tipodeproduto = ?, descricao = ?, precounitario = ?, quantidade = ?, active = ? WHERE id_produto = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, p.getNomeDoProduto());
         stmt.setString(2, p.getTipoDeProduto());
         stmt.setString(3, p.getDescricao());
         stmt.setDouble(4, p.getPrecoPorUnidade());
         stmt.setInt(5, p.getQuantidade());
-        stmt.setString(6, p.getImagemDoProduto());
-        stmt.setBoolean(7, p.getAtivo());
-        stmt.setLong(8, p.getId());
+        stmt.setBoolean(6, p.getAtivo());
+        stmt.setLong(7, p.getId());
         stmt.execute();
         stmt.close();
     }
@@ -194,7 +208,6 @@ public class EcommerceDAO {
         return null;
     }
 
-    //Histórico
     public void fechar() throws SQLException {
         conexao.close();
     }
