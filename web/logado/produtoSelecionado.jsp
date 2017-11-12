@@ -31,18 +31,26 @@
                 </div>
             </div>
         </header>
-        <%
-            Produto p = (Produto) request.getAttribute("selecionado");
-        %>
-        <img src='<%= p.getImagemDoProduto()%>' title='<%= p.getNomeDoProduto()%>' alt='<%= p.getNomeDoProduto()%>' />
-        <h4>ID: <%= p.getId()%></h4>
-        <h4>Nome: <%= p.getNomeDoProduto()%></h4>
-        <p>Categoria: <%= p.getTipoDeProduto()%></p>
-        <p>Descrição: <%= p.getDescricao()%></p>
-        <p>Quantidade: <%= p.getQuantidade()%></p>
-        <p>Preço da unidade: <%= p.getPrecoPorUnidade()%></p>
-        <p>Preço do cento: <%= p.getPrecoPorUnidade() * 100 * 0.9%></p>
-        <br/>
+        <section class="container">
+            <%
+                Produto p = (Produto) request.getAttribute("selecionado");
+            %>
+            <div class="col-lg-7 text-center distancia">
+                <img  src='imagens/<%= p.getImagemDoProduto()%>' class="tamanho2" title='<%= p.getNomeDoProduto()%>' alt='<%= p.getNomeDoProduto()%>'>
+                <p>Nome: <%= p.getNomeDoProduto()%></p>
+                <p>Categoria: <%= p.getTipoDeProduto()%></p>
+                <p>Descrição: <%= p.getDescricao()%></p>
+                <p>Quantidade: <%= p.getQuantidade()%></p>
+                <p>Preço da unidade: <%= p.getPrecoPorUnidade()%></p>
+                <p>Preço do cento: <%= p.getPrecoPorUnidade() * 100 * 0.9%></p>
+                <form class="form-horizontal" method="POST" action="Controller">
+                    <label class="col-md-4 control-label">Quantidade:</label>  
+                    <input name="txtQuantidade" type="text" class="col-lg-3" required="">
+                    <input type="hidden" name="txtAcao" value="adicionaCarrinho">
+                    <input class="btn btn-lg btn-primary" type="submit" value="Adicionar ao carrinho"/>
+                </form>
+            </div>
+        </section>
         <footer class="blog-footer">
             <p>Todos os direitos reservados | Copyright © 2017  Doces & Salgados.</p>
             <a href="#"><img src="imagens/ico/facebook.png"></a>
