@@ -1,5 +1,6 @@
 package dao;
 
+import bean.PedidosEHistorico;
 import bean.Pessoa;
 import bean.Produto;
 import java.sql.Connection;
@@ -78,7 +79,7 @@ public class EcommerceDAO {
         stmt.close();
     }
 
-    public Pessoa buscarPessoa(long id) throws SQLException {
+    public Pessoa buscarPessoa(Long id) throws SQLException {
         String sql = "SELECT * FROM usuario WHERE id_usuario = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setLong(1, id);
@@ -137,7 +138,7 @@ public class EcommerceDAO {
         stmt.close();
     }
 
-    public void apagarProduto(long id) throws SQLException {
+    public void apagarProduto(Long id) throws SQLException {
         String sql = "DELETE FROM produto WHERE id_produto = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setLong(1, id);
@@ -187,7 +188,7 @@ public class EcommerceDAO {
         return produtos;
     }
 
-    public Produto buscarProduto(long id) throws SQLException {
+    public Produto buscarProduto(Long id) throws SQLException {
         String sql = "SELECT * FROM produto WHERE id_produto = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setLong(1, id);
@@ -206,6 +207,21 @@ public class EcommerceDAO {
         }
         stmt.close();
         return null;
+    }
+
+    //Histórico
+    public List<PedidosEHistorico> listarHistorico(Long id) throws SQLException {
+        List<PedidosEHistorico> historicoPedidos = new ArrayList<>();
+        String sql = "SELECT * FROM historico WHERE id_usuario = ?;";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            PedidosEHistorico encontrados = new PedidosEHistorico();
+            encontrados.setId_Pedido(rs.getLong("id_historico"));
+            historicoPedidos.add(encontrados);
+        }
+        stmt.close();
+        return historicoPedidos;
     }
 
     public void fechar() throws SQLException {

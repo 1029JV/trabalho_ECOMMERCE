@@ -1,7 +1,6 @@
 package servlet;
 
-import bean.Pessoa;
-import bean.Produto;
+import bean.*;
 import dao.EcommerceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpSession;
 public class Controller extends HttpServlet {
 
     Long idDoLogado;
+    List<PedidosEHistorico> pedidoHistorico;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -147,14 +147,15 @@ public class Controller extends HttpServlet {
             Boolean ativo = Boolean.valueOf(request.getParameter("txtAtivo"));
             try {
                 EcommerceDAO logado = new EcommerceDAO();
-                Produto p = new Produto();
-                p.setNomeDoProduto(nomeDoProduto);
-                p.setTipoDeProduto(tipoDeProduto);
-                p.setDescricao(descricao);
-                p.setPrecoPorUnidade(precoPorUnidade);
-                p.setQuantidade(quantidade);
-                p.setAtivo(ativo);
-                logado.atualizarProduto(p);
+                Produto produtoParaAtualizar = new Produto();
+                produtoParaAtualizar.setNomeDoProduto(nomeDoProduto);
+                produtoParaAtualizar.setTipoDeProduto(tipoDeProduto);
+                produtoParaAtualizar.setDescricao(descricao);
+                produtoParaAtualizar.setPrecoPorUnidade(precoPorUnidade);
+                produtoParaAtualizar.setQuantidade(quantidade);
+                produtoParaAtualizar.setAtivo(ativo);
+                logado.atualizarProduto(produtoParaAtualizar);
+                request.setAttribute("produtoParaAtualizar", produtoParaAtualizar);
                 request.getRequestDispatcher("logado/atualizarProduto.jsp").forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -162,7 +163,7 @@ public class Controller extends HttpServlet {
         }
 
         if (acao.equals("adicionarCarrinho") && (Boolean) session.getAttribute("isLogado") == true) {
-            
+
         }
 
         if (acao.equals("sairDaSessao")) {
@@ -171,7 +172,15 @@ public class Controller extends HttpServlet {
         }
 
         if (acao.equals("pageHistorico") && (Boolean) session.getAttribute("isLogado") == true) {
-            request.getRequestDispatcher("logado/historico.jsp").forward(request, response);
+            try {
+                EcommerceDAO historico = new EcommerceDAO();
+                List<PedidosEHistorico> pedidoHistorico = historico.listarHistorico(idDoLogado);
+                request.setAttribute("pedidoHistorico", pedidoHistorico);
+                request.getRequestDispatcher("logado/historico.jsp").forward(request, response);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         if (acao.equals("pageProdutos") && (Boolean) session.getAttribute("isLogado") == true) {
