@@ -125,7 +125,7 @@ public class EcommerceDAO {
     }
 
     public void atualizarProduto(Produto p) throws SQLException {
-        String sql = "UPDATE usuario SET nome = ?, tipodeproduto = ?, descricao = ?, precounitario = ?, quantidade = ?, active = ? WHERE id_produto = ?;";
+        String sql = "UPDATE produto SET nome = ?, tipodeproduto = ?, descricao = ?, precounitario = ?, quantidade = ?, active = ? WHERE id_produto = ?;";
         PreparedStatement stmt = conexao.prepareStatement(sql);
         stmt.setString(1, p.getNomeDoProduto());
         stmt.setString(2, p.getTipoDeProduto());

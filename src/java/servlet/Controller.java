@@ -94,10 +94,9 @@ public class Controller extends HttpServlet {
             String telefone = request.getParameter("txtTelefone");
             String email = request.getParameter("txtEmail");
             String endereco = request.getParameter("txtEndereco");
-            String usuario = request.getParameter("txtUsuario");
-            String senha = request.getParameter("txtSenha");
             try {
                 Pessoa p = new Pessoa();
+                p.setId(idDoLogado);
                 p.setNomeCompleto(nome);
                 p.setRg(rg);
                 p.setCpf(cpf);
@@ -105,8 +104,6 @@ public class Controller extends HttpServlet {
                 p.setTelefone(telefone);
                 p.setEmail(email);
                 p.setEndereco(endereco);
-                p.setLogin(usuario);
-                p.setSenha(senha);
                 EcommerceDAO logado = new EcommerceDAO();
                 logado.atualizarPessoa(p);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -139,6 +136,7 @@ public class Controller extends HttpServlet {
             }
         }
         if (acao.equals("atualizarProduto") && (Boolean) session.getAttribute("isLogado") == true) {
+            Long id = Long.valueOf(request.getParameter("idProduto"));
             String nomeDoProduto = request.getParameter("txtNomeDoProduto");
             String tipoDeProduto = request.getParameter("txtTipoDeProduto");
             String descricao = request.getParameter("txtDescricao");
@@ -148,6 +146,7 @@ public class Controller extends HttpServlet {
             try {
                 EcommerceDAO logado = new EcommerceDAO();
                 Produto produtoParaAtualizar = new Produto();
+                produtoParaAtualizar.setId(id);
                 produtoParaAtualizar.setNomeDoProduto(nomeDoProduto);
                 produtoParaAtualizar.setTipoDeProduto(tipoDeProduto);
                 produtoParaAtualizar.setDescricao(descricao);
@@ -155,8 +154,7 @@ public class Controller extends HttpServlet {
                 produtoParaAtualizar.setQuantidade(quantidade);
                 produtoParaAtualizar.setAtivo(ativo);
                 logado.atualizarProduto(produtoParaAtualizar);
-                request.setAttribute("produtoParaAtualizar", produtoParaAtualizar);
-                request.getRequestDispatcher("logado/atualizarProduto.jsp").forward(request, response);
+                request.getRequestDispatcher("logado/index.jsp").forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
             }

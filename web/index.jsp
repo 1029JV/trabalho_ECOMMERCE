@@ -9,14 +9,20 @@
         <title>Início</title>
     </head>
     <body>
-        <% Boolean errouDados = (Boolean) request.getAttribute("errouDados");%>
-        <% if (!(errouDados == null)) { %>
-        <h3 class="container text-center">Dados inseridos não correspondem a nenhum usuário, se você não está cadastrado, por favor <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCadastrarPessoa">cadastre-se</a>.</h3>
-        <% }%>
+
+
         <section class="container text-center">
             <img src="imagens/pageErro.png" class="distancia2" title="Doces & Salgados" alt="Doces & Salgados"/>
             <form class="form-signin" method="POST" action="Controller">
                 <h2 class="form-signin-heading">Doces & Salgados</h2>
+                <% Boolean errouDados = (Boolean) request.getAttribute("errouDados");%>
+                <% if (!(errouDados == null)) { %>
+                <font color="white">
+                <p class="bg-danger" align="justify">
+                    Dados inseridos não correspondem a nenhum usuário, se você não está cadastrado, por favor <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCadastrarPessoa">cadastre-se</a>.
+                </p>
+                </font>        
+                <% }%>        
                 <label for="inputEmail" class="sr-only">Usuário</label>
                 <input type="text" name="txtLogin" class="form-control" placeholder="Usuário" required autofocus>
                 <label for="inputPassword" class="sr-only">Senha</label>

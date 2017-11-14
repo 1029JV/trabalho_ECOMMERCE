@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--<%@page contentType="text/html" pageEncoding="UTF-8"%>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,10 +20,10 @@
             <div class="blog-masthead">
                 <div class="container">
                     <nav class="nav">
-                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogado">InÃ­cio</a>
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogado">Início</a>
                         <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageAtualizarPessoa">Atualizar dados pessoais</a>   
                         <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>
-                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">HistÃ³rico</a>               
+                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">Histórico</a>               
                         <a class="nav-link active" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Produtos</a>
                         <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
                     </nav>
@@ -37,9 +37,9 @@
                 <input name="txtNomeDoProduto" type="text" class="form-control input-md col-lg-3" required="">
                 <label class="col-md-4 control-label">Tipo:</label>  
                 <input name="txtTipoDeProduto" type="text" class="form-control input-md col-lg-3" required="">
-                <label class="col-md-4 control-label">DescriÃ§Ã£o:</label>  
+                <label class="col-md-4 control-label">Descrição:</label>  
                 <input name="txtDescricao" type="text" class="form-control input-md col-lg-12" required="">
-                <label class="col-md-4 control-label">PreÃ§o da unidade:</label>
+                <label class="col-md-4 control-label">Preço da unidade:</label>
                 <input name="txtPrecoUnidade" type="text" class="form-control input-md col-lg-3" required="">
                 <label class="col-md-4 control-label">Quantidade:</label>  
                 <input name="txtQuantidade" type="text" class="form-control input-md col-lg-3" required="">
@@ -48,14 +48,14 @@
                 <label class="col-md-4 control-label">Item deve ser listado?</label><br/>
                 <select name="txtAtivo">
                     <option value="true">Sim</option>
-                    <option value="false">NÃ£o</option>
+                    <option value="false">Não</option>
                 </select><br/>
                 <input type="hidden" name="txtAcao" value="cadastrarProduto" />
                 <input class="btn btn-lg btn-primary" type="submit" value="Cadastrar"/><br/>
             </form>
         </section>
         <footer class="blog-footer">
-            <p>Todos os direitos reservados | Copyright Â© 2017  Doces & Salgados.</p>
+            <p>Todos os direitos reservados | Copyright © 2017  Doces & Salgados.</p>
             <a href="#"><img src="imagens/ico/facebook.png"></a>
             <a href="#"><img src="imagens/ico/google.png"></a>
             <a href="#"><img src="imagens/ico/twitter.png"></a>

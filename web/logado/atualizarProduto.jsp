@@ -51,6 +51,7 @@
                     <option value="false">Não</option>
                 </select><br/>
                 <input type="hidden" name="txtAcao" value="atualizarProduto" />
+                <input type="hidden" name="idProduto" value='<%= p.getId() %>' />
                 <input class="btn btn-lg btn-primary" type="submit" value="Atualizar"/><br/>
             </form>
         </section>
