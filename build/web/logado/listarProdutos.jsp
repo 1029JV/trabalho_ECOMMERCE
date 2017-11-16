@@ -22,12 +22,12 @@
             <div class="blog-masthead">
                 <div class="container">
                     <nav class="nav">
-                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogado">Início</a>
-                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageAtualizarPessoa">Atualizar dados pessoais</a>   
-                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageCarrinho">Carrinho</a>
-                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageHistorico">Histórico</a>               
-                        <a class="nav-link active" href="../trabalho_ECOMMERCE/Controller?txtAcao=pageProdutos">Produtos</a>
-                        <a class="nav-link" href="../trabalho_ECOMMERCE/Controller?txtAcao=sairDaSessao">Sair</a>
+                        <a class="nav-link" href="Controller?txtAcao=pageLogado">Início</a>
+                        <a class="nav-link" href="Controller?txtAcao=pageAtualizarPessoa">Atualizar dados pessoais</a>   
+                        <a class="nav-link" href="Controller?txtAcao=pageCarrinho">Carrinho</a>
+                        <a class="nav-link" href="Controller?txtAcao=pageHistorico">Histórico</a>               
+                        <a class="nav-link active" href="Controller?txtAcao=pageProdutos">Produtos</a>
+                        <a class="nav-link" href="Controller?txtAcao=sairDaSessao">Sair</a>
                     </nav>
                 </div>
             </div>

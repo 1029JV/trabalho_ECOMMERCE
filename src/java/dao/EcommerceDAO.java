@@ -70,11 +70,10 @@ public class EcommerceDAO {
         stmt.setString(1, p.getNomeCompleto());
         stmt.setString(2, p.getRg());
         stmt.setString(3, p.getCpf());
-        stmt.setString(4, p.getFoto());
-        stmt.setString(5, p.getTelefone());
-        stmt.setString(6, p.getEmail());
-        stmt.setString(7, p.getEndereco());
-        stmt.setLong(8, p.getId());
+        stmt.setString(4, p.getTelefone());
+        stmt.setString(5, p.getEmail());
+        stmt.setString(6, p.getEndereco());
+        stmt.setLong(7, p.getId());
         stmt.execute();
         stmt.close();
     }

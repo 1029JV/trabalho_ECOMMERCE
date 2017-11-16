@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--<%@page contentType="text/html" pageEncoding="UTF-8"%>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,7 +11,7 @@
     <body>
         <% Boolean cadastrado = (Boolean) request.getAttribute("cadastrado");%>
         <% if (!(cadastrado == null)) { %>
-        <h3 class="container text-center">UsuÃ¡rio jÃ¡ possui cadastro.</h3>
+        <h3 class="container text-center">Usuário já possui cadastro.</h3>
         <% }%>
         <section class="container">
             <form  class="form-horizontal" method="POST" action="Controller">
@@ -28,7 +28,7 @@
                 <input name="txtTelefone" type="tel" class="form-control input-md col-lg-3" required="">
                 <label class="col-md-4 control-label">Email:</label>  
                 <input name="txtEmail" type="email" class="form-control input-md col-lg-5" required="">
-                <label class="col-md-4 control-label">EndereÃ§o:</label>  
+                <label class="col-md-4 control-label">Endereço:</label>  
                 <input name="txtEndereco" type="text" class="form-control input-md col-lg-8" required="">
                 <label class="col-md-4 control-label">Usuario:</label>  
                 <input name="txtUsuario" type="text" class="form-control input-md col-lg-4" required="">
@@ -40,7 +40,7 @@
             <a href="../trabalho_ECOMMERCE/Controller?txtAcao=pageLogin" class="btn btn-lg btn-primary">Entrar</a>
         </section>  
         <footer class="blog-footer">
-            <p>Todos os direitos reservados | Copyright Â© 2017  Doces & Salgados.</p>
+            <p>Todos os direitos reservados | Copyright © 2017  Doces & Salgados.</p>
             <a href="#"><img src="imagens/ico/facebook.png"></a>
             <a href="#"><img src="imagens/ico/google.png"></a>
             <a href="#"><img src="imagens/ico/twitter.png"></a>

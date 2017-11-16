@@ -106,7 +106,7 @@ public class Controller extends HttpServlet {
                 p.setEndereco(endereco);
                 EcommerceDAO logado = new EcommerceDAO();
                 logado.atualizarPessoa(p);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("logado/index.jsp").forward(request, response);
             } catch (Exception e) {
                 e.printStackTrace();
             }
