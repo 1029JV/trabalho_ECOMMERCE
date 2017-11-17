@@ -39,9 +39,9 @@
                 <input name="txtNomeDoProduto" type="text" class="form-control input-md col-lg-3" required="" value='<%= p.getNomeDoProduto()%>'>
                 <label class="col-md-4 control-label">Tipo:</label>  
                 <input name="txtTipoDeProduto" type="text" class="form-control input-md col-lg-3" required="" value='<%= p.getTipoDeProduto()%>'>
-                <label class="col-md-4 control-label">Descri??o:</label>  
+                <label class="col-md-4 control-label">Descrição:</label>  
                 <input name="txtDescricao" type="text" class="form-control input-md col-lg-12" required="" value='<%= p.getDescricao()%>'>
-                <label class="col-md-4 control-label">Pre?o da unidade:</label>
+                <label class="col-md-4 control-label">Preço da unidade:</label>
                 <input name="txtPrecoUnidade" type="text" class="form-control input-md col-lg-3" required="" value='<%= p.getPrecoPorUnidade()%>'>
                 <label class="col-md-4 control-label">Quantidade</label>  
                 <input name="txtQuantidade" type="text" class="form-control input-md col-lg-3" required="" value='<%= p.getQuantidade()%>'>

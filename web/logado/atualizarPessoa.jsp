@@ -1,5 +1,5 @@
 <%@page import="bean.Pessoa"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%--<%@page contentType="text/html" pageEncoding="UTF-8"%>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,10 +22,10 @@
             <div class="blog-masthead">
                 <div class="container">
                     <nav class="nav">
-                        <a class="nav-link" href="Controller?txtAcao=pageLogado">InÃ­cio</a>
+                        <a class="nav-link" href="Controller?txtAcao=pageLogado">Início</a>
                         <a class="nav-link active" href="Controller?txtAcao=pageAtualizarPessoa">Atualizar dados pessoais</a>   
                         <a class="nav-link" href="Controller?txtAcao=pageCarrinho">Carrinho</a>
-                        <a class="nav-link" href="Controller?txtAcao=pageHistorico">HistÃ³rico</a>               
+                        <a class="nav-link" href="Controller?txtAcao=pageHistorico">Histórico</a>               
                         <a class="nav-link" href="Controller?txtAcao=pageProdutos">Produtos</a>
                         <a class="nav-link" href="Controller?txtAcao=sairDaSessao">Sair</a>
                     </nav>
@@ -45,14 +45,14 @@
                 <input name="txtTelefone" type="tel" class="form-control input-md col-lg-3" required="" value='<%= p.getTelefone()%>'>
                 <label class="col-md-4 control-label">Email:</label>  
                 <input name="txtEmail" type="email" class="form-control input-md col-lg-5" required="" value='<%= p.getEmail()%>'>
-                <label class="col-md-4 control-label">EndereÃ§o:</label>  
+                <label class="col-md-4 control-label">Endereço:</label>  
                 <input name="txtEndereco" type="text" class="form-control input-md col-lg-8" required="" value='<%= p.getEndereco()%>'>
                 <input type="hidden" name="txtAcao" value="atualizarPessoa" />
                 <input class="btn btn-lg btn-primary" type="submit" value="Atualizar"/><br/>
             </form>
         </section>
         <footer class="blog-footer">
-            <p>Todos os direitos reservados | Copyright Â© 2017  Doces & Salgados.</p>
+            <p>Todos os direitos reservados | Copyright © 2017  Doces & Salgados.</p>
             <a href="#"><img src="imagens/ico/facebook.png"></a>
             <a href="#"><img src="imagens/ico/google.png"></a>
             <a href="#"><img src="imagens/ico/twitter.png"></a>
