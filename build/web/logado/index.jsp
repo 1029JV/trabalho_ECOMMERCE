@@ -9,13 +9,6 @@
         <title>Doces & Salgados</title>
     </head>
     <body>
-        <% session = request.getSession(false);
-            if (session != null) {
-                if ((Boolean) session.getAttribute("isLogado") == null) {
-                    response.sendRedirect("../Controller?txtAcao=redirecionaNaoLogado");
-                }
-            }
-        %>
         <header>
             <div class="blog-masthead">
                 <div class="container">
